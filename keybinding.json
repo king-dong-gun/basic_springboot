@@ -1,0 +1,7 @@
+[
+    {
+        "key": "cmd+shift+l",
+        "command": "editor.action.toggleWordWrap",
+        "when": "editorTextFocus"
+    }
+]
