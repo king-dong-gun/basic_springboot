@@ -1,11 +1,11 @@
 ## 1일차
 ## SpringBoot 개요
 
-### Spring Boot 환경설정
+### **1. Spring Boot 환경설정**
 1. MacOs -> Java JDK 17.0 버전 이상
 2. Extension pack for java 설치 후 세팅에서 setting.json 파일 오픈
 3. 경로에 맞게 jdk 설정
-  ```
+  ```shell
       {
       "java.home": "/usr/lib/jvm/jdk-21",
       "java.configuration.runtimes": [
@@ -38,12 +38,14 @@
     - SpringBoot Dashboard
     - Apps -> Spring01 Run | Debug 중에서 하나 아이콘 클릭해 서버 실행
     - 디버그로 실행해야 `Hot code replace`가 등장!!
-<img src="https://github.com/king-dong-gun/basic_springboot/blob/main/images/sp01.png" width="350">
 
-22. 터미널에서 `.\gradle.bat` 실행
-23. `Gradle for java` 코끼리 아이콘 -> Task -> Build -> Build play icon(Run task) 실행
-24. Spring Boot Dashboard -> Apps -> Spring01 Run | Debug 중 하나 아이콘 클릭 
-25. 브라우저 변경설정 -> browser -> Spring>Dashboard -> 크롬 설정
+<img src="../images/sp01.png" width = "710">
+ 
+
+1.  터미널에서 `.\gradle.bat` 실행
+2.  `Gradle for java` 코끼리 아이콘 -> Task -> Build -> Build play icon(Run task) 실행
+3.  Spring Boot Dashboard -> Apps -> Spring01 Run | Debug 중 하나 아이콘 클릭 
+4.  브라우저 변경설정 -> browser -> Spring>Dashboard -> 크롬 설정
    
 
     > **Trouble Shooting**
@@ -57,10 +59,10 @@
     > `:complieJava execution failed...` JDK 에러 메세지, 잘못된 설치다! `build.gradle Spring boot 버전 다운 3.3.0 -> 3.1.5`
 
 
-### Spring 기초
+### **2. Spring 기초**
 
 Spring MVC
-<img src="https://github.com/king-dong-gun/basic_springboot/blob/main/images/sp02.png" width = "710">
+<img src="../images/sp02.png" width = "710">
 
 - 개발환경, 개발 난이도를 낮추는 작업 
 - Servlet -> EJB -> JSP -> Spring -> Spring Boot으로 발전
@@ -74,7 +76,7 @@ Spring MVC
 6. JSP, **Thymeleaf**, Mustache 등등 편하게 사용할 수 있다.
 7. DB 연동이 매우 쉽다.
 
-### DB 설정
+### **3. DB 설정**
 - `H2 DB`: Spring Boot에서 손쉽게 사용한 Inmemory DB, Oracle, MySQL, SQLServer와 쉽게 호환된다.
 - `Oracle`: 운영시 사용할 DB
 - `Oracle PKNUSB / pknu_P@ss`로 생성
