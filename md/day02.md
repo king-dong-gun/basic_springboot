@@ -29,9 +29,10 @@
 
 
 ### **2. DB 설정**
-- `H2 DB`: Spring Boot에서 손쉽게 사용한 Inmemory DB, Oracle, MySQL, SQLServer와 쉽게 호환된다.
+- `H2 DB`: Spring Boot에서 손쉽게 사용한 `Inmemory DB`, `Oracle`, `MySQL`, `SQLServer`와 쉽게 호환된다.
 - `Oracle`: 운영시 사용할 DB
 - `Oracle PKNUSB / pknu_P@ss`로 생성
+- `sqlplis`: 접속 (Docker or Oracle) -> `System`으로 접속
   ```shell
   > sqlplus system/password
   SQL >

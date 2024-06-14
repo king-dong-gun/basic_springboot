@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 // @Setter
 public class Todo {
     private Integer tno;
-    private String title;
-    private LocalDateTime duDate;
-    private String writer;
-    private Integer isDone;
+    private String title; // 제목
+    private LocalDateTime duDate; // 일자
+    private String writer; // 사람
+    private Integer isDone; // 유무
 }
