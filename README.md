@@ -13,3 +13,5 @@
   1. Oracle 도커로 설치
   2. DB 설정
   3. Spring Boot + MyBatis
+
+## [3일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day03.md)

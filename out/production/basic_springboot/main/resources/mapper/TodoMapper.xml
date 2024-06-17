@@ -4,15 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.come1997.spring02.mapper.TodoMapper">
+<!--여러가지 파라미터를 받을때 hashmap-->
 <select id="selectTodos" resultType="hashmap">
+<!---mapper의 쿼리문에는 ;을 쓰지 않는다!-->
         SELECT 	TNO,
 		TITLE,
 		DUEDATE,
 		WRITER,
 		ISDONE
-        FROM TODOS;
+        FROM TODOS
 </select>
 
-<select>
+<select id="selectTodo" resultType="com.come1997.spring02.domain.Todo" parameterType = "int">
+        SELECT 	TNO,
+		TITLE,
+		DUEDATE,
+		WRITER,
+		ISDONE
+        FROM TODOS
+        WHERE TNO = #{TNO}
 </select>
 </mapper>

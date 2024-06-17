@@ -1,4 +1,4 @@
-package test.java.com.example.spring02.config.MyBatisConfig;
+package com.come1997.spring02.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;

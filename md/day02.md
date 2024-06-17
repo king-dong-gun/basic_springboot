@@ -45,7 +45,7 @@
 
 ### **3. Spring Boot + MyBatis**
 1. application name: spring02, jar, 17Ver
-2. SpringBoot 선택, Spring Web
+2. SpringBoot 3.2.6Ver, Spring Web
     - Spring Boot 3.3.x에는 MyBatis가 없다..!
 3. `build.gradle`을 꼭 확인한다!!
 4. `application.properties` 추가 작성한다.
@@ -103,9 +103,5 @@ public interface TodoMapper {
 
     Todo selectTodo(int tno);
 }
-
-```
-**TodoMapper.xml**
-```xml
 
 ```
