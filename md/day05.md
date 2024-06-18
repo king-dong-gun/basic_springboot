@@ -7,6 +7,9 @@
    - Service 코드 작성
    - Controller 코드 작성
    - Html 코드 작성 및 타임리프 적용
+2. bootstrap 적용
+   - 설치 및 파일위치 설정
+   - html에 적용하기
 
 
 
