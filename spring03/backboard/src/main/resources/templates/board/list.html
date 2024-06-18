@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>게시판 목록</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
+</head>
+<body>
+<div class="container my-3">
+  <table class="table table-light table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>No</th>
+      <th>제목</th>
+      <th>작성일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="board, loop : ${boardList}">
+      <!--bootstrap 숫자 루프-->
+      <td th:text="${loop.count}"></td>
+      <td>
+        <a th:href="@{/board/detail/{bno}(bno=${board.bno})}" th:text="${board.title}"></a>
+      </td>
+<!--      <td th:text="${board.content}"></td>-->
+      <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script th:src="@{/bootstrap.min.js}"></script>
+</body>
+</html>

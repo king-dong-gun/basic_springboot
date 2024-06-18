@@ -15,3 +15,14 @@
   3. Spring Boot + MyBatis
 
 ## [3일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day03.md)
+- 개발시작
+  1. MyBatis 적용
+  2. 개발 순서대로 천천히 실행
+
+## [4일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day04.md)
+1. Spring Boot + JPA + Oracle + Thymeleaf 설정
+2. JSP 프로젝트 생성
+3. 개발시작
+   - 테스트 파일 확인
+
+## [5일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day05.md)
