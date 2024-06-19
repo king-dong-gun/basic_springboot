@@ -1,14 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>게시판 상세</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--bootstrap.css 적용-->
-  <link rel="stylesheet" th:href="@{/bootstrap.min.css}">
-</head>
-<body>
-<div class="container my-3">
+<html lang="ko" xmlns:th="http://www.Thymeleaf.org" layout:decorate="~{layout}">
+
+<div layout:fragment="main-content" class="container my-3">
 
   <!--게시글 영역-->
   <h2 th:text="${board.title}" class="border-bottom py-2"></h2>
@@ -37,15 +30,14 @@
   </div>
   <br>
   <!--답변 기능 영역-->
-  <form th:action="@{/reply/create/{bno}(bno=${board.bno})}" method="post" class="my-3"> <!--form 태그 안에만 submit 발동-->
-    <textarea name="content" id="content" rows="10" class="form-control"></textarea>
-    <div class="d-flex justify-content-between">
-      <input type="submit" value="댓글등록" class="btn btn-sm btn-primary btn-custom">
+  <form th:action="@{/reply/create/{bno}(bno=${board.bno})}" th:object="${replyForm}" method="post" class="my-3"> <!--form 태그 안에만 submit 발동-->
+    <!--오류 메세지 영역-->
+    <div th:replace="~{errors :: formErrorFragment}"></div>
+    <textarea th:field="*{content}" rows="10" class="form-control"></textarea>
+    <div class="d-flex justify-content-between my-3">
       <a href="/board/list" class="btn btn-sm btn-secondary btn-custom">목록</a>
+      <input type="submit" value="댓글등록" class="btn btn-sm btn-primary btn-custom">
     </div>
   </form>
 </div>
-<!--bootstrap.js 적용-->
-<script th:src="@{/bootstrap.min.js}"></script>
-</body>
 </html>

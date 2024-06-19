@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.Thymeleaf.org" layout:decorate="~{layout}">
+<div layout:fragment="main-content" class="container my-3">
+    <h5 class="border-bottom my-3 pb-2">게시글 등록/수정</h5>
+
+    <form th:action="@{/board/create}" th:object="${boardForm}" method="post">
+        <!--오류 메세지 영역-->
+        <div th:replace="~{errors :: formErrorFragment}"></div>
+        <!--글 제목 영역-->
+        <div class="mb-3">
+            <label for="title" class="form-label">글 제목</label>
+            <input type="text" th:field="*{title}" class="form-control"><!--부트스틀랩 고정코드-->
+        </div>
+        <!--글 내용 영역-->
+        <div class="mb-3">
+            <label for="title" class="form-label">글 내용</label>
+            <textarea type="text" th:field="*{content}" class="form-control" rows="10"></textarea><!--부트스틀랩 고정코드-->
+        </div>
+        <div class="d-flex justify-content-end">
+            <input type="submit" value="저장하기" class="btn btn-sm btn-primary m-2">
+            <a href="/board/list" class="btn btn-sm btn-secondary my-2">목록으로</a>
+        </div>
+    </form>
+</div>
+</html>

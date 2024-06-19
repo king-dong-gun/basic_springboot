@@ -6,6 +6,7 @@ import com.come1997.backboard.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,5 +29,13 @@ public class BoardService {
         } else {
             throw new Exception("board not found");
         }
+    }
+
+    // 작성한 게시글 저장
+    public void setBoard(String title, String content) {
+        // 빌더로 생성한 객체
+        Board board = Board.builder().title(title).content(content).createDate(LocalDateTime.now()).build();
+
+        this.boardRepository.save(board);
     }
 }
