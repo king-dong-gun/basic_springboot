@@ -25,9 +25,12 @@
 3. 개발시작(미완)
    - 테스트 파일 확인
 
-## [5일차] (https://github.com/king-dong-gun/basic_springboot/blob/main/md/day05.md)
+## [5일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day05.md)
 1. Spring Boot JPA 프로젝트 개발 (미완)
 2. bootstrap 적용하기
 
-## [6일차] (https://github.com/king-dong-gun/basic_springboot/blob/main/md/day06.md)
-1. 
+## [6일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day06.md)
+1. Spring Boot JPA 프로젝트 개발(미완)
+2. bootstrap 추가
+    - 네비게이션 바
+    - 게시글, 댓글 `validation` 기능
