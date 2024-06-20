@@ -3,6 +3,7 @@
 ### 목차
 
 1. Spring Boot JPA 프로젝트 개발
+   - Thymeleaf, bootstrap으로 스타일링
 
 
 ### **1. Spring Boot JAP 프로젝트 개발**

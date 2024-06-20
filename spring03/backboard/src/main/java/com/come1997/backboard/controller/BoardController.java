@@ -6,6 +6,7 @@ import com.come1997.backboard.validation.BoardForm;
 import com.come1997.backboard.validation.ReplyForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,9 +25,13 @@ public class BoardController {
     // 주로 데이터를 조회하거나, 리소스를 가져오는 데 사용할 때 get
     // @RequestMapping("/list", method = RequestMethod.GET) -> 아래와 동일 기능
     @GetMapping("/list")
-    public String requestMethodName(Model model) {  // Model: controller에 있는 객체를 view로 보내주는 역할을 하는 객체
-        List<Board>boardList = this.boardService.getList();
-        model.addAttribute("boardList", boardList); // thymeleaf, mustache, jsp등을 view로 보내는 기능!
+    // Model: controller에 있는 객체를 view로 보내주는 역할을 하는 객체
+    public String requestMethodName(Model model, @RequestParam(value = "page", defaultValue = "0")int page) {
+//        List<Board>boardList = this.boardService.getList();
+//        model.addAttribute("boardList", boardList); // thymeleaf, mustache, jsp등을 view로 보내는 기능!
+        Page<Board> paging = this.boardService.getList(page);   // 페이징된 Board를 view로 전달!!
+        model.addAttribute("paging", paging);
+
         return "board/list";    // templates/board/list.html을 랜더링해서 리턴해라!
     }
 
