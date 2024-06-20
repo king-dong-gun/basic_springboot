@@ -91,45 +91,34 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
 4. 페이지 버튼 추가하기
 - 타임리프 페이지 버튼 코드
+
+
 ```html
     <!--페이징 시작-->
     <div th:if="${!paging.isEmpty()}">
         <ul class="pagination justify-content-center">
             <!--이전 버튼-->
             <li th:classappend="${!paging.hasPrevious()} ? disabled" class="page-item">
+               <!--현재 페이지 번호에서 -1을 뺀 값을 쿼리 파라미터로 전달-->
                 <a th:href="@{|?page=${paging.number-1}|}" class="page-link">&lt;</a>
             </li>
             <!--페이지 번호-->
+            <!--totalPages의 -1까지만 숫자 시퀀스를 생성-->
             <li th:each="page : ${#numbers.sequence(0, paging.totalPages-1)}"
+                <!--현재 페이지 번호에서 앞뒤 +-2까지만-->
                 th:if="${page >= paging.number -2 and page <= paging.number +2}"
+                <!--반복중인 페이지번호와 현재페이지번호가 같으면 true를 반환 -> active 클래스를 추가한다.-->
                 th:classappend="${page == paging.number} ? 'active'" class="page-item">
                 <a th:href="@{|?page=${page}|}" th:text="${page}" class="page-link">0</a>
             </li>
             <!--다음 버튼-->
+           <!--현재 페이지 번호에서 +1을 더한 값을 쿼리 파라미터로 전달-->
             <li th:classappend="${!paging.hasNext()} ? disabled" class="page-item">
                 <a th:href="@{|?page=${paging.number+1}|}" class="page-link">&gt;</a>
             </li>
         </ul>
     </div>
 ```
-> `paging.isEmpty()`: 페이징 객체의 데이터가 있는 부분만 랜더링
-> 
-> `<li th:classappend="${!paging.hasPrevious()} ? 'disabled'" class="page-item">`: 이전 객체가 없는 경우 disabled
-> 
-> `<a th:href="@{|?page=${paging.number-1}|}" class="page-link">&lt;</a>`: 현재 페이지에서 -1을 뺀 페이지의 URL을 동적으로 생성
-> 
-> `<li th:classappend="${!paging.hasNext()} ? 'disabled'" class="page-item">`: 다음 객체가 없는 경우 disabled
-> - `${paging.number-1}`를 사용하여 현재 페이지 번호에서 1을 뺀 값을 쿼리 파라미터로 전달
-> 
-> `th:each="page : ${#numbers.sequence(0, paging.totalPages-1)}"`: paging.totalPages - 1까지의 숫자 시퀀스를 생성
-> 
-> `th:if="${page >= paging.number -2 and page <= paging.number +2}"`: 조건을 만족하는 경우에만 페이징 랜더링, 앞,뒤 2개의 페이지만 보이기
-> 
-> `th:classappend="${page == paging.number} ? 'active'" class="page-item">`: 현재 반복 중인 페이지 번호와 현재 페이지 번호가 같으면 true를 반환 -> active 클래스를 추가
-> 
->`<a th:href="@{|?page=${paging.number+1}|}" class="page-link">&gt;</a>`: 현재 페이지에서 +1을 더한 페이지 URL을 동적으로 생성
-> - `${paging.number+1}`를 사용하여 현재 페이지 번호에서 1을 더한 값을 쿼리 파라미터로 전달
-
 
 5. `BoardService.java` `getList()`에서 최신순, 역정렬로 변경하기
 ```java
@@ -174,31 +163,30 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
 <img src="../images/ss1.png" width = "710">
 
-> 1. **Http Request 수신**
-> - 사용자가 로그인 정보와 함께 인증 요청을 보낸다.
-> 2. **유저 자격을 기반으로 인증토근 생성** 
-> - `AuthenticationFilter`가 요청을 가로채고, 가로챈 정보를 통해
-> `UsernamePasswordAuthenticationTocken`의 인증용 객체를 생성한다.
-> 3. **Filter를 통해 AuthenticationTocken을 AuthenticationMnager로 위임**
-> - `AuthenticationManager`의 구현체인 `ProviderManager`에게 생성한 UsernamePasswordToken 객체를 전달한다.
-> 4. **AuthenticationProvider의 목록으로 인증을 시도**
-> - `AutenticationManger`는 등록된 `AuthenticationProvider`들을 조회하며 인증을 요구한다.
-> 5. **UserDetailsService의 요구**
-> - 실제 DB에서 사용자 인증정보를 가져오는 `UserDetailsService`에 사용자 정보를 넘겨준다.
-> 6. UserDetails를 이용해 User 객체에 대한 정보 탐색
-> - 넘겨받은 사용자 정보를 통해 DB에서 찾아낸 사용자 정보인 `UserDetails` 객체를 만든다.
-> 7. **User 객체의 정보들을 UserDetails가 UserDetailsService(LoginService)로 전달**
-> - `AuthenticaitonProvider`들은 `UserDetails`를 넘겨받고 사용자 정보를 비교한다.
-> 8. **인증 객체 or AuthenticationException**
-> - 인증이 완료가 되면 권한 등의 사용자 정보를 담은 `Authentication` 객체를 반환한다.
-> 9. **인증 끝**
-> - 다시 최초의 `AuthenticationFilter`에 `Authentication`객체를 반환한다.
-> 10. **SecurityContext에 인증 객체를 설정**
-> - `Authentication`객체를 `Security Context`에 저장한다.
-> 
--  최종적으로는 `SecurityContextHolder`는 세션 영역에 있는 `SecurityContext`에 `Authentication` 객체를 저장한다. 
+1. **Http Request 수신**
+- 사용자가 로그인 정보와 함께 인증 요청을 보낸다.
+2. **유저 자격을 기반으로 인증토근 생성** 
+- `AuthenticationFilter`가 요청을 가로채고, 가로챈 정보를 통해 `UsernamePasswordAuthenticationTocken`의 인증용 객체를 생성한다.
+3. **Filter를 통해 AuthenticationTocken을 AuthenticationMnager로 위임**
+- `AuthenticationManager`의 구현체인 `ProviderManager`에게 생성한 UsernamePasswordToken 객체를 전달한다.
+4. **AuthenticationProvider의 목록으로 인증을 시도**
+- `AutenticationManger`는 등록된 `AuthenticationProvider`들을 조회하며 인증을 요구한다.
+5. **UserDetailsService의 요구**
+- 실제 DB에서 사용자 인증정보를 가져오는 `UserDetailsService`에 사용자 정보를 넘겨준다.
+6. `UserDetails`를 이용해 `User` 객체에 대한 정보 탐색
+- 넘겨받은 사용자 정보를 통해 DB에서 찾아낸 사용자 정보인 `UserDetails` 객체를 만든다.
+7. **`User` 객체의 정보들을 `UserDetails`가 `UserDetailsService(LoginService)`로 전달**
+- `AuthenticaitonProvider`들은 `UserDetails`를 넘겨받고 사용자 정보를 비교한다.
+8. **인증 객체 or `AuthenticationException`**
+- 인증이 완료가 되면 권한 등의 사용자 정보를 담은 `Authentication` 객체를 반환한다.
+9. **인증 끝**
+- 다시 최초의 `AuthenticationFilter`에 `Authentication`객체를 반환한다.
+10. **`SecurityContext`에 인증 객체를 설정**
+- `Authentication`객체를 `Security Context`에 저장한다.
 
-- 사용자 정보를 저장한다는 것은 스프링 시큐리티가 전통적인 세선-쿠키 기반의 인증 방식을 사용한다는 것을 의미한다.
+> 최종적으로는 `SecurityContextHolder`는 세션 영역에 있는 `SecurityContext`에 `Authentication` 객체를 저장한다. 
+>
+> 사용자 정보를 저장한다는 것은 스프링 시큐리티가 전통적인 세선-쿠키 기반의 인증 방식을 사용한다는 것을 의미한다.
 
 ### 설정
 1. `build.gradle`에 디펜던시 추가
