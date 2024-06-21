@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -27,10 +29,17 @@ public class SecurityConfig {
                                 // ignoringRequestMatchers 영역에 있는 프레임을 해제
                                 XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN
                         ))))
-
+                // 로그인 관련된 url 지정 ~/member.login
+                // 로그인이 성공하면 루트로 변경
+                .formLogin((fl) -> fl.loginPage("/member/login").defaultSuccessUrl("/"))
 
         ;
 
         return http.build();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(); // 암호화 빈으로 생성
     }
 }

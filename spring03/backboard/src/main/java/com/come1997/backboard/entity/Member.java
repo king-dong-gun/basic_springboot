@@ -3,9 +3,14 @@ package com.come1997.backboard.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
-@Data
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
 @Entity
 @Builder
 public class Member {
@@ -20,7 +25,10 @@ public class Member {
     @Column(unique = true, length = 150)
     private String email;
 
-
     private String password;
+
+    @CreatedDate
+    @Column(name = "regDate", updatable = false)
+    private LocalDateTime regDate; // 회원가입일
 
 }

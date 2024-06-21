@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.Thymeleaf.org" layout:decorate="~{layout}">
+<div layout:fragment="main-content" class="card container my-3 form-registar">
+    <div class="my-3 border-bottom">
+        <h4>회원가입</h4>
+    </div>
+    <form th:action="@{/member/registar}" th:object="${memberForm}" method="post">
+        <!--/templates/errors.html include-->
+        <div th:replace="~{errors :: formErrorFragment}"></div>
+        <div class="mb-3">
+            <label for="username" class="form-label">이름</label>
+            <input type="text" th:field="*{username}" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">이메일</label>
+            <input type="text" th:field="*{email}" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="password1" class="form-label">비밀번호</label>
+            <input type="password" th:field="*{password1}" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="password2" class="form-label">비밀번호 확인</label>
+            <input type="password" th:field="*{password2}" class="form-control">
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-sm btn-primary">회원가입</button>
+            <a href="/" class="btn btn-sm btn-secondary">돌아가기</a>
+        </div>
+    </form>
+</div>
+</html>

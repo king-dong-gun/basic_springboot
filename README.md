@@ -35,10 +35,12 @@
     - 네비게이션 바
     - 게시글, 댓글 `validation` 기능
 
-## [6일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day07.md)
+## [7일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day07.md)
 1. Spring Boot JPA 프로젝트 개발
    - bootstrap 및 타임리프 추가
 2. Spring Security
     - Spring Security란?
     - Spring Security 설정
+
+## [8일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day08.md)
 
