@@ -5,7 +5,8 @@
         <thead class="table-dark">
         <tr>
             <th>번호</th>
-            <th>제목</th>
+            <th style="width: 50%">제목</th>
+            <th>글쓴이</th>
             <th>작성일</th>
         </tr>
         </thead>
@@ -13,11 +14,15 @@
         <tr th:each="board, loop : ${paging}">
             <!--각 게시물의 번호를 역순으로!!-->
             <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
-            <td>
+            <td class="text-start">
                 <a th:href="@{|/board/detail/${board.bno}|}" th:text="${board.title}"></a>
                 <!--만약 replyList의 사이즈가 있다면 text로 css는 뱃지로 나타내라!!!-->
                 <span th:if="${#lists.size(board.replyList) > 0}" th:text="${#lists.size(board.replyList)}"
                       class="badge text-bg-success"></span>
+            </td>
+            <!--작성자 추가-->
+            <td>
+                <span th:if="${board.writer != null}" th:text="${board.writer.username}"></span>
             </td>
             <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
         </tr>

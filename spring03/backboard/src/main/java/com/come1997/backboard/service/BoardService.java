@@ -1,7 +1,9 @@
 package com.come1997.backboard.service;
 
 
+import com.come1997.backboard.common.NotFoundException;
 import com.come1997.backboard.entity.Board;
+import com.come1997.backboard.entity.Member;
 import com.come1997.backboard.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -36,19 +38,20 @@ public class BoardService {
     }
 
     // 특정 bno의 값을 가진 객체의 데이터베이스 조회
-    public Board getBoard(Long bno) throws Exception{
+    public Board getBoard(Long bno) {
         Optional<Board> board = boardRepository.findByBno(bno);
         if (board.isPresent()) {    // 데이터가 존재해야 실행된다.
             return board.get();
         } else {
-            throw new Exception("board not found");
+            throw new NotFoundException("board not found");
         }
     }
 
     // 작성한 게시글 저장
-    public void setBoard(String title, String content) {
+    public void setBoard(String title, String content, Member writer) {
         // 빌더로 생성한 객체
         Board board = Board.builder().title(title).content(content).createDate(LocalDateTime.now()).build();
+        board.setWriter(writer);
 
         this.boardRepository.save(board);
     }

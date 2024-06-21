@@ -43,4 +43,11 @@
     - Spring Security 설정
 
 ## [8일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day08.md)
+1. Spring Boot JPA 프로젝트 개발
+    - 리스트에 작성자 표시
+    - 댓글에 작성자 표시
+2. Spring Security
+    - 로그인
+    - 회원가입
+
 

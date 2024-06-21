@@ -1,14 +1,17 @@
 package com.come1997.backboard.service;
 
 
+import com.come1997.backboard.common.NotFoundException;
 import com.come1997.backboard.entity.Member;
 import com.come1997.backboard.repository.MemberRepository;
+import com.come1997.backboard.security.MemberRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,8 +31,17 @@ public class MemberService {
 
         member.setPassword(passwordEncoder.encode(password));   // 암호화한 값을 DB에 저장
         member.setRegDate(LocalDateTime.now());
+        member.setMemberRole(MemberRole.USER);  // 일반 사용자 권한
         this.memberRepository.save(member);
 
         return member;
+    }
+
+    // 사용자를 가져오는 메서드
+    public Member getMember(String username) {
+        Optional<Member> member = this.memberRepository.findByUsername(username);
+        if (member.isPresent()) {
+            return member.get();
+        } else throw new NotFoundException("Member not found...");
     }
 }

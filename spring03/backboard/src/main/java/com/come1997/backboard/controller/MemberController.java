@@ -19,6 +19,13 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    // 로그인
+    @GetMapping("/login")
+    public String login() {
+        return "member/login";
+    }
+
+
     // 회원가입
     @GetMapping("/registar")
     public String registar(MemberForm memberForm) {

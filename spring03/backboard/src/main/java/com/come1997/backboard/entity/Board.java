@@ -3,15 +3,8 @@ package com.come1997.backboard.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,6 +33,11 @@ public class Board {
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createDate; // 글 생성일
+
+    // 사용자가 여러개의 게시글을 작성할 수 있다, 다대일
+    @ManyToOne
+    private Member writer;
+
 
     // 중요, RelationShip 일대다
     @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
