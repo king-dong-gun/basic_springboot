@@ -249,24 +249,73 @@ public String modify(@Valid BoardForm boardForm, BindingResult bindingResult, Pr
 4. 검색 기능
 #### `BoardService`에 `search()` 메서드 추가
 ```java
+// 검색기능
+public Specification<Board> searchBoard(String keyword) {   // Board 엔티티 검색 정의
+    return new Specification<Board>() {
+        private static final long serialVersionUID = 1L;    // 필요한 값 추가작성
 
+        @Override
+        public Predicate toPredicate(Root<Board> board, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+            criteriaQuery.distinct(true);   // 중복제거
+           // 검색 조건을 위한 쿼리 정의
+            Join<Board, Reply> reply = board.join("replyList", JoinType.LEFT);
+            return criteriaBuilder.or(
+                    criteriaBuilder.like(board.get("title"), "%" + keyword + "%"), // 게시글 제목에서 검색
+                    criteriaBuilder.like(board.get("content"), "%" + keyword + "%"), // 게시글 내용에서 검색
+                    criteriaBuilder.like(reply.get("content"), "%" + keyword + "%") // 댓글 내용에서 검색
+            );
+        }
+    };
+}
 ```
 
 #### `BoardRepository`에 `findAll()` 메서드 추가
 ```java
+// 페이징용 JPA 쿼리 자동생성 인터페이스 메서드 작성
+@SuppressWarnings("null")   // 경고 메시지를 없애주는 어노테이션
+// select b1_0.bno,b1_0.content,b1_0.create_date,b1_0.title from board b1_0 offset ? rows fetch first ? rows only
+Page<Board> findAll(Pageable pageable);
+
+// 조건에 맞는 게시글을 찾는 동적 쿼리
+Page<Board> findAll(Specification<Board> specification, Pageable pageable); // BoardEntity 페이지 네이션 결과반환
 
 ```
 
 #### `BoardService`에 `getList()` 메서드 추가
+```java
+// 검색 기능 추가
+public Page<Board> getList(int page, String keyword) {
+    List<Sort.Order> sort = new ArrayList<>();
+    sort.add(Sort.Order.desc("createDate"));
+    Pageable pageable = PageRequest.of(page, 10, Sort.by(sort));
+
+    Specification<Board> spec = searchBoard(keyword);
+    return this.boardRepository.findAll(spec, pageable);
+}
+```
 
 
 #### `BoardController`에 `getList()` 메서드 추가
+```java
 
-#### `list.html` 검색창 추가, `searchForm` 영역 추가, 페이징 영역 수정, js 추가
+L// 검색기능 추가 -> /list 06.24 변경
+
+@GetMapping("/list")
+
+public String list(Model model, @RequestParam(value = "page", defaultValue = "0")int page,
+        @RequestParam(value = "kw", defaultValue = "") String keyword) {
+    
+    Page<Board> paging = this.boardService.getList(page, keyword);  // 검색 추가
+    model.addAttribute("paging", paging);
+    model.addAttribute("keyword", keyword);
+    
+    return "board/list";
+}
+```
+#### 같은 내용을 검색했을때 
+<img src="../images/sp38.png" width = "710">
 
 
-5. 마크다운 적용
-- 마크다운 뷰, 마크다운 에디터 추가
 
 
 
