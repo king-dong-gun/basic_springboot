@@ -1,5 +1,6 @@
 package com.come1997.backboard.repository;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.come1997.backboard.entity.Board;
@@ -25,5 +26,8 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     @SuppressWarnings("null")   // 경고 메시지를 없애주는 어노테이션
     // select b1_0.bno,b1_0.content,b1_0.create_date,b1_0.title from board b1_0 offset ? rows fetch first ? rows only
     Page<Board> findAll(Pageable pageable);
+
+    // 조건에 맞는 게시글을 찾는 동적 쿼리
+    Page<Board> findAll(Specification<Board> specification, Pageable pageable); // BoardEntity 페이지 네이션 결과반환
 
 }

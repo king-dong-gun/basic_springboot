@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import java.time.LocalDateTime;
 
 // 게시판 보드 테이블 엔티티
@@ -38,8 +40,13 @@ public class Board {
     @ManyToOne
     private Member writer;
 
+    @LastModifiedDate
+    @Column(name = "modifyDate")
+    private LocalDateTime modifyDate;   // 24.06.24 수정일 추가
+
 
     // 중요, RelationShip 일대다
+    @OrderBy("createDate ASC") // 댓글을 작성일 기준으로 오름차순 정렬
     @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
     private List<Reply> replyList;
 
