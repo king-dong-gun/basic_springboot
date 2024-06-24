@@ -51,5 +51,9 @@
     - 회원가입
 
 ## [9일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day09.md)
+1. Spring Boot JPA 프로젝트 개발
+    - 수정, 삭제 기능 추가
+    - 앵커 기능 추가
+    - 검색 기능 추가
 
 
