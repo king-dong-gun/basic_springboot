@@ -1,10 +1,11 @@
 package com.come1997.backboard.repository;
 
-import com.come1997.backboard.entity.Member;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import com.come1997.backboard.entity.Member;
 
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {

@@ -4,7 +4,7 @@
     <!-- 검색창 영역 -->
     <div class="row my-3 align-items-center">
         <div class="col-8">
-            <a th:href="@{/board/create}" class="btn btn-sm btn-primary">게시글 등록</a>
+            <a th:href="@{/board/create/{category}(category=${category})}" class="btn btn-sm btn-primary">게시글 등록</a>
         </div>
         <div class="col-4">
             <div class="input-group">
@@ -20,12 +20,14 @@
             <th>번호</th>
             <th style="width: 50%;">제목</th>
             <th>작성자</th>
+            <!--24.06.26 조회수 추가-->
+            <th>조회수</th>
             <th>작성일</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="board, loop : ${paging}" class="text-center">
-            <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}" class="text-end"></td>
+        <tr th:each="board, loop : ${paging.content}" class="text-center">
+            <td th:text="${paging.totalElements - (paging.number * paging.size) - loop.index}" class="text-end"></td>
             <td class="text-start">
                 <a th:href="@{|/board/detail/${board.bno}|}" th:text="${board.title}"></a>
                 <span th:if="${#lists.size(board.replyList) > 0}" th:text="${#lists.size(board.replyList)}"
@@ -35,7 +37,11 @@
             <td>
                 <span th:if="${board.writer != null}" th:text="${board.writer.username}"></span>
             </td>
-            <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            <!--조회수 추가-->
+            <td>
+                <span th:text="${board.hit}"></span>
+            </td>
+            <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd')}"></td>
         </tr>
         </tbody>
     </table>
@@ -43,34 +49,29 @@
     <div th:if="${!paging.isEmpty()}">
         <ul class="pagination justify-content-center">
             <!-- 이전버튼 -->
-            <li th:classappend="${!paging.hasPrevious} ? disabled" class="page-item">
-                <!-- <a th:href="@{|?page=0|}" class="page-link">《</a> // 이전방식 -->
-                <a th:data-page="${0}" href="javascript:void(0)" class="page-link">«</a>
+            <li th:classappend="${!paging.hasPrevious()} ? 'disabled'" class="page-item">
+                <a th:data-page="0" href="javascript:void(0)" class="page-link">«</a>
             </li>
-            <li th:classappend="${!paging.hasPrevious} ? disabled" class="page-item">
-                <!-- <a th:href="@{|?page=${paging.number-1}|}" class="page-link">〈</a> -->
+            <li th:classappend="${!paging.hasPrevious()} ? 'disabled'" class="page-item">
                 <a th:data-page="${paging.number-1}" href="javascript:void(0)" class="page-link">‹</a>
             </li>
             <!-- 페이지번호버튼-->
             <li th:each="page : ${#numbers.sequence(0, paging.totalPages-1)}"
                 th:if="${page >= paging.number-2 and page <= paging.number+2}"
                 th:classappend="${page == paging.number} ? 'active'" class="page-item">
-                <!-- <a th:href="@{|?page=${page}|}" th:text="${page+1}" class="page-link"></a> -->
                 <a th:data-page="${page}" th:text="${page+1}" href="javascript:void(0)" class="page-link"></a>
             </li>
             <!-- 다음버튼 -->
-            <li th:classappend="${!paging.hasNext} ? disabled" class="page-item">
-                <!-- <a th:href="@{|?page=${paging.number+1}|}" class="page-link">〉</a> -->
+            <li th:classappend="${!paging.hasNext()} ? 'disabled'" class="page-item">
                 <a th:data-page="${paging.number+1}" href="javascript:void(0)" class="page-link">›</a>
             </li>
-            <li th:classappend="${!paging.hasNext} ? disabled" class="page-item">
-                <!-- <a th:href="@{|?page=${paging.totalPages-1}|}" class="page-link">》</a> -->
+            <li th:classappend="${!paging.hasNext()} ? 'disabled'" class="page-item">
                 <a th:data-page="${paging.totalPages-1}" href="javascript:void(0)" class="page-link">»</a>
             </li>
         </ul>
     </div>
     <!-- 검색부분 영역 -->
-    <form th:action="@{/board/list}" method="get" id="searchForm">
+    <form th:action="@{/board/list/{category}(category=${category})}" method="get" id="searchForm">
         <input type="hidden" id="kw" name="kw" th:value="${kw}">
         <input type="hidden" id="page" name="page" th:value="${paging.number}">
     </form>

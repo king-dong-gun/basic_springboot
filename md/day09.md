@@ -316,6 +316,13 @@ public String list(Model model, @RequestParam(value = "page", defaultValue = "0"
 <img src="../images/sp38.png" width = "710">
 
 
+#### 댓글을 검색했을때
+
+<img src="../images/sp39.png" width = "710">
+
+
+
+
 
 
 

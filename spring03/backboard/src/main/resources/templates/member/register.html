@@ -4,7 +4,7 @@
     <div class="my-3 border-bottom">
         <h4>회원가입</h4>
     </div>
-    <form th:action="@{/member/registar}" th:object="${memberForm}" method="post">
+    <form th:action="@{/member/register}" th:object="${memberForm}" method="post">
         <!--/templates/errors.html include-->
         <div th:replace="~{errors :: formErrorFragment}"></div>
         <div class="mb-3">

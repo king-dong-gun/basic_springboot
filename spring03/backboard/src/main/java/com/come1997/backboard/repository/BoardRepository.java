@@ -4,6 +4,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.come1997.backboard.entity.Board;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,4 +32,13 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     // 조건에 맞는 게시글을 찾는 동적 쿼리
     Page<Board> findAll(Specification<Board> specification, Pageable pageable); // BoardEntity 페이지 네이션 결과반환
 
+    // 제목 또는 내용으로 검색하는 메서드 추가
+    @Query("SELECT DISTINCT board " +
+            "FROM Board board " +
+            "LEFT JOIN Reply reply ON reply.board = board " +
+            "WHERE board.title LIKE %:kw% " +
+            "OR board.content LIKE %:kw% " +
+            "OR reply.content LIKE %:kw%")
+    Page<Board> findAllByKeyword(@Param("kw") String keyword, Pageable pageable);
 }
+

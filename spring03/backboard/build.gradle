@@ -1,11 +1,11 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.3.0'
+	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.1.5'
 }
 
 group = 'com.come1997'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.2-SNAPSHOT'
 
 java {
 	toolchain {
@@ -44,6 +44,8 @@ dependencies {
 	// 스프링 시큐리티 디팬던시
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	// 마크다운 뷰어 디펜던시
+	implementation 'org.commonmark:commonmark:0.21.0'
 
 	// implementation 'org.springframework:.boot:spring-boot-starter-log4j2'
 }
