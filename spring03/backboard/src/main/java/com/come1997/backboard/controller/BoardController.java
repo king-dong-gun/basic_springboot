@@ -38,7 +38,7 @@ public class BoardController {
     private final MemberService memberService; // 사용자 정보
     private final CategoryService categoryService; // 카테고리 사용.
 
-    @GetMapping("/list")
+//    @GetMapping("/list")
     public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
                        @RequestParam(value = "kw", defaultValue = "") String keyword) {
         Page<Board> paging = this.boardService.getList(page, keyword);  // 검색추가

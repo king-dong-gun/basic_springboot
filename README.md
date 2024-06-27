@@ -32,28 +32,51 @@
 ## [6일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day06.md)
 1. Spring Boot JPA 프로젝트 개발(스타일링 미완)
 2. bootstrap 추가
-    - 네비게이션 바
-    - 게시글, 댓글 `validation` 기능
+- 네비게이션 바
+- 게시글, 댓글 `validation` 기능
 
 ## [7일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day07.md)
 1. Spring Boot JPA 프로젝트 개발
-   - bootstrap 및 타임리프 추가
+- bootstrap 및 타임리프 추가
 2. Spring Security
-    - Spring Security란?
-    - Spring Security 설정
+- Spring Security란?
+- Spring Security 설정
 
 ## [8일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day08.md)
 1. Spring Boot JPA 프로젝트 개발
-    - 리스트에 작성자 표시
-    - 댓글에 작성자 표시
+- 리스트에 작성자 표시
+- 댓글에 작성자 표시
 2. Spring Security
-    - 로그인
-    - 회원가입
+- 로그인
+- 회원가입
 
 ## [9일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day09.md)
 1. Spring Boot JPA 프로젝트 개발
-    - 수정, 삭제 기능 추가
-    - 앵커 기능 추가
-    - 검색 기능 추가
+- 수정, 삭제 기능 추가
+- 앵커 기능 추가
+- 검색 기능 추가
+
+## [10일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day10.md)
+1. Spring Boot JPA 프로젝트 개발
+- 검색 기능: JPA Query
+- 마크다운 적용
+- 카테고리 설정
+
+## [11일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day11.md)
+1. Spring Boot JPA 프로젝트 개발
+- 조회수 표시
+- AWS 업로드
+
+## [12일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day12.md)
+1. Spring Boot JPA 프로젝트 개발
+- 에러페이지 작업 (404, 500...etc)
+- 비밀번호 초기화 및 새 비밀번호 입력(미완)
+  - 확인 메일 받기
+
+## [13일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day13.md)
+1. Spring Boot JPA 프로젝트 개발
+- 비밀번호 초기화 및 새 비밀번호 입력(계속)
+- 구글 로그인
+
 
 

@@ -242,6 +242,10 @@ fi
 
 - 서버실행
 
+> `Amazon`의 ip주소 + port 번호를 치면 프로그램을 실행하지 않아도 접속이 가능해진다..! 
+
+<img src="../images/sp51.png" width = "710">
+
 
 
 

@@ -45,7 +45,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	// 마크다운 뷰어 디펜던시
-	implementation 'org.commonmark:commonmark:0.21.0'
+	implementation 'org.commonmark:commonmark:0.22.0'
+	// 메일 전송 디펜던시
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework:spring-context-support'
+//	implementation 'org'
 
 	// implementation 'org.springframework:.boot:spring-boot-starter-log4j2'
 }

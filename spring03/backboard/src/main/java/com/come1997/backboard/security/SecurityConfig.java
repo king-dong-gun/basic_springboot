@@ -28,7 +28,8 @@ public class SecurityConfig {
                 // 로그인, 회원가입 페이지만 접근 가능
                 // http.authorizeHttpRequests((atr) -> atr.requestMatchers(new AntPathRequestMatcher("/member/registar"), new AntPathRequestMatcher("/member/login")).permitAll())
                 // CSRF 위변조 공격을 막는 부분 해제, 특정 URL은 csrf 공격 리스트에서 제거
-                .csrf((csrf) -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
+//                .csrf((csrf) -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**")))
+                .csrf((csrf) -> csrf.disable()) // REST API 전달시 404 오류가 나서
                 // h2-console 페이지가 frameset, frame으로 구성 CORS와 유사한 옵션을 추가
                 .headers((headers) -> headers.addHeaderWriter((new XFrameOptionsHeaderWriter(
                         // ignoringRequestMatchers 영역에 있는 프레임을 해제
