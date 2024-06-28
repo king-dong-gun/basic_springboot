@@ -3,7 +3,7 @@
 ### 목차
 #### Spring Boot JPA 프로젝트 개발
 1. 에러페이지 작업 (404, 500...etc)
-2. 비밀번호 찾기, 변경
+2. 비밀번호 초기화
     - 확인 메일 받기
 
 #### **1. 에러페이지 작업**
@@ -108,7 +108,7 @@ public class CustomErrorController implements ErrorController {
 <img src="../images/sp52.png" width = "710">
 
 
-#### **2. 비밀번호 찾기, 변경**
+#### **2. 비밀번호 초기화**
 1. 메일 보내기
 - `build.gradle` 메일을 보내기 위한 디펜던시 추가
 ```java

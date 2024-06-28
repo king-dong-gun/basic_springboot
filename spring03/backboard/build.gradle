@@ -35,7 +35,7 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	// DB를 위한 dependencies 추가 (H2, Oracle, JPA)
 	runtimeOnly 'com.h2database:h2'
-	 runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+//	 runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	// Thymeleaf 레이아웃 적용을 위한 디팬던시(종속성)
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'

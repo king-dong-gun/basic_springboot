@@ -23,7 +23,7 @@ public class Member {
     @Column(unique = true, length = 100)
     private String username;
 
-    @Column(unique = true, length = 150)
+    @Column(name = "email", unique = true, length = 150)
     private String email;
 
     private String password;
