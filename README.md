@@ -78,11 +78,17 @@
 - 비밀번호 초기화 및 새 비밀번호 입력(완)
 
 ## [14일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day14.md)
-1. Spring Boot JPA 프로젝트 개발
-- frontboard 작업(React)
-- backboard 작업(Rest API)
-- 구글 로그인
+1. 리액트 개요
+2. 리액트 설치
+3. 리액트 기초
+4. 리액트 추가 내용
 
+
+## [15일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day15.md)
+1. 리액트 개요
+2. 리액트 설치
+3. 리액트 기초
+4. 리액트 추가 내용
 
 
 
