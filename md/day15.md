@@ -340,8 +340,16 @@ function Board() {  // 객체를 만드는 함수
 
 export default Board;
 ```
-
+#### 각 board 객체를 테이블 행으로 렌더링
 <img src="../images/re10.png" width = "710">
+
+#### 게시글 하나 더 추가!
+<img src="../images/sp67.png" width = "710">
+
+<img src="../images/re11.png" width = "710">
+
+- **http://localhost:8080/board/list/free** 에 게시글을 새로 등록하여도 데이터가 잘 넘어온다 
+
 
 
 
