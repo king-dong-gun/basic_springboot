@@ -85,10 +85,7 @@
 
 
 ## [15일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day15.md)
-1. 리액트 개요
-2. 리액트 설치
-3. 리액트 기초
-4. 리액트 추가 내용
+1. Spring Boot, React 연동 프로젝트 개발
 
 
 
