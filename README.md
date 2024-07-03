@@ -86,6 +86,12 @@
 
 ## [15일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day15.md)
 1. Spring Boot, React 연동 프로젝트 개발
+- 리액트 라이브러리 설치
+- frontboard 개발
+- Rest API
 
-
+## [16일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day16.md)
+1. Spring Boot, React 연동 프로젝트 개발
+- 페이징
+- 상세화면 (미완)
 

@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BoardDto {
+    private Long num;   // 24.07.03 추가
     private long bno;
     private String title;
     private String content;

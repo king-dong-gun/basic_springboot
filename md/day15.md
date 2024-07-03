@@ -3,6 +3,9 @@
 ### 목차
 
 1. Spring Boot React 연동 프로젝트 개발 
+- 리액트 라이브러리 설치
+- frontboard 개발
+- Rest API
 
 
 #### **1. Spring Boot React 연동 프로젝트 개발
