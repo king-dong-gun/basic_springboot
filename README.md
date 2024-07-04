@@ -95,3 +95,9 @@
 - 페이징
 - 상세화면 (미완)
 
+## [17일차](https://github.com/king-dong-gun/basic_springboot/blob/main/md/day17.md)
+1. Spring Boot, React 연동 프로젝트 개발
+- 상세화면
+- 로그인
+- 입력화면
+
